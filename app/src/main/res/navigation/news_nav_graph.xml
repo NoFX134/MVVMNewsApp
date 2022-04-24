@@ -2,51 +2,33 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/news_nav_graph"
-    app:startDestination="@id/breakingNewsFragment">
-
+    app:startDestination="@id/articleFragment3">
     <fragment
-        android:id="@+id/breakingNewsFragment"
+        android:id="@+id/articleFragment3"
+        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.ArticleFragment"
+        android:label="ArticleFragment" />
+    <fragment
+        android:id="@+id/breakingNewsFragment3"
         android:name="com.androiddevs.mvvmnewsapp.ui.fragments.BreakingNewsFragment"
         android:label="BreakingNewsFragment" >
         <action
-            android:id="@+id/action_breakingNewsFragment_to_articleFragment"
-            app:destination="@id/articleFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
-
+            android:id="@+id/action_breakingNewsFragment3_to_articleFragment3"
+            app:destination="@id/articleFragment3" />
     </fragment>
     <fragment
-        android:id="@+id/saveNewsFragment"
+        android:id="@+id/saveNewsFragment3"
         android:name="com.androiddevs.mvvmnewsapp.ui.fragments.SaveNewsFragment"
         android:label="SaveNewsFragment" >
         <action
-            android:id="@+id/action_saveNewsFragment_to_articleFragment"
-            app:destination="@id/articleFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            android:id="@+id/action_saveNewsFragment3_to_articleFragment3"
+            app:destination="@id/articleFragment3" />
     </fragment>
     <fragment
-        android:id="@+id/searchNewsFragment"
+        android:id="@+id/searchNewsFragment3"
         android:name="com.androiddevs.mvvmnewsapp.ui.fragments.SearchNewsFragment"
         android:label="SearchNewsFragment" >
         <action
-            android:id="@+id/action_searchNewsFragment_to_articleFragment2"
-            app:destination="@id/articleFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            android:id="@+id/action_searchNewsFragment3_to_articleFragment3"
+            app:destination="@id/articleFragment3" />
     </fragment>
-    <fragment
-        android:id="@+id/articleFragment"
-        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.ArticleFragment"
-        android:label="ArticleFragment"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"
-        app:popEnterAnim="@anim/slide_in_left"
-        app:popExitAnim="@anim/slide_out_right"/>
 </navigation>
