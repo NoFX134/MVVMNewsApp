@@ -2,33 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/news_nav_graph"
-    app:startDestination="@id/articleFragment3">
+    app:startDestination="@id/breakingNewsFragment">
     <fragment
-        android:id="@+id/articleFragment3"
+        android:id="@+id/breakingNewsFragment"
+        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.BreakingNewsFragment"
+        android:label="BreakingNewsFragment" />
+    <fragment
+        android:id="@+id/saveNewsFragment"
+        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.SaveNewsFragment"
+        android:label="SaveNewsFragment" />
+    <fragment
+        android:id="@+id/searchNewsFragment"
+        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.SearchNewsFragment"
+        android:label="SearchNewsFragment" />
+    <fragment
+        android:id="@+id/articleFragment"
         android:name="com.androiddevs.mvvmnewsapp.ui.fragments.ArticleFragment"
         android:label="ArticleFragment" />
-    <fragment
-        android:id="@+id/breakingNewsFragment3"
-        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.BreakingNewsFragment"
-        android:label="BreakingNewsFragment" >
-        <action
-            android:id="@+id/action_breakingNewsFragment3_to_articleFragment3"
-            app:destination="@id/articleFragment3" />
-    </fragment>
-    <fragment
-        android:id="@+id/saveNewsFragment3"
-        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.SaveNewsFragment"
-        android:label="SaveNewsFragment" >
-        <action
-            android:id="@+id/action_saveNewsFragment3_to_articleFragment3"
-            app:destination="@id/articleFragment3" />
-    </fragment>
-    <fragment
-        android:id="@+id/searchNewsFragment3"
-        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.SearchNewsFragment"
-        android:label="SearchNewsFragment" >
-        <action
-            android:id="@+id/action_searchNewsFragment3_to_articleFragment3"
-            app:destination="@id/articleFragment3" />
-    </fragment>
 </navigation>
