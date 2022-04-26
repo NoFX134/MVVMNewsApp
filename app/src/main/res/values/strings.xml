@@ -5,4 +5,9 @@
     <string name="save_news">Save News</string>
     <string name="search_news">Search News</string>
     <string name="search">Search…</string>
+    <string name="articleImage">ArticleImage</string>
+    <string name="source">SOURCE</string>
+    <string name="title">TITLE</string>
+    <string name="description">DESCRIPTION</string>
+    <string name="published_at">PUBLISHED AT</string>
 </resources>

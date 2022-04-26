@@ -13,7 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class NewsActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityNewsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
