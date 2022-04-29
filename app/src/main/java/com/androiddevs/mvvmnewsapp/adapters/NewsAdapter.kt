@@ -11,7 +11,7 @@ import com.androiddevs.mvvmnewsapp.databinding.ItemArticlePreviewBinding
 import com.androiddevs.mvvmnewsapp.models.Article
 import com.bumptech.glide.Glide
 
-class NewsAdapter(list: List<Article>) : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
+class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     private lateinit var binding: ItemArticlePreviewBinding
 
     inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -25,7 +25,7 @@ class NewsAdapter(list: List<Article>) : RecyclerView.Adapter<NewsAdapter.Articl
             return oldItem == newItem
         }
     }
-    private val differ = AsyncListDiffer(this, differCallback)
+    val differ = AsyncListDiffer(this, differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         binding = ItemArticlePreviewBinding.inflate(
