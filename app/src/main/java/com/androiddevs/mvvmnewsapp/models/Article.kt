@@ -2,6 +2,7 @@ package com.androiddevs.mvvmnewsapp.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
 //сохранение в локальную базу данных
 @Entity(
