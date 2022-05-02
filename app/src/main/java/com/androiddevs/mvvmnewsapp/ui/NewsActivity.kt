@@ -20,12 +20,13 @@ class NewsActivity : AppCompatActivity() {
     lateinit var viewModel: NewsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val newsRepository = NewsRepository(ArticleDatabase(this))
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
-        viewModel=ViewModelProvider(this,viewModelProviderFactory).get(NewsViewModel::class.java)
+        viewModel= ViewModelProvider(this,viewModelProviderFactory)[NewsViewModel::class.java]
         val navView: BottomNavigationView = binding.bottomNavigationView
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
