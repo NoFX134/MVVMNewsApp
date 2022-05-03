@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.databinding.ItemArticlePreviewBinding
 import com.androiddevs.mvvmnewsapp.models.Article
-import com.androiddevs.mvvmnewsapp.utils.Constants.Companion.TIME_PATTERN
+import com.androiddevs.mvvmnewsapp.utils.Constants.TIME_PATTERN
 import com.bumptech.glide.Glide
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter

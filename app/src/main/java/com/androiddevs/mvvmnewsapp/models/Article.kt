@@ -1,5 +1,6 @@
 package com.androiddevs.mvvmnewsapp.models
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
@@ -17,6 +18,7 @@ data class Article(
     val content: String,
     val description: String,
     val publishedAt: String,
+    @Embedded(prefix = "source")
     val source: Source,
     val title: String,
     val url: String,
