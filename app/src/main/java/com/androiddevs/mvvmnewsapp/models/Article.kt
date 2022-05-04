@@ -1,27 +1,31 @@
 package com.androiddevs.mvvmnewsapp.models
 
-import androidx.room.Embedded
+
+import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
-import java.util.*
 
-//сохранение в локальную базу данных
+
 @Entity(
     tableName = "articles"
 )
-
 data class Article(
-    //автоматическая генерация ID
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
-    val author: String,
-    val content: String,
-    val description: String,
-    val publishedAt: String,
-    @Embedded(prefix = "source")
+    @NonNull
+    val author: String?,
+    @NonNull
+    val content: String?,
+    @NonNull
+    val description: String?,
+    @NonNull
+    val publishedAt: String?,
     val source: Source,
-    val title: String,
-    val url: String,
-    val urlToImage: String
-): Serializable
+    @NonNull
+    val title: String?,
+    @NonNull
+    val url: String?,
+    @NonNull
+    val urlToImage: String?
+) : Serializable

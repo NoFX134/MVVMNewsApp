@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.adapters.NewsAdapter
@@ -25,6 +26,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
     private var _binding: FragmentSearchNewsBinding? = null
     private val binding get() = _binding!!
     private val TAG = "SearchNewsFragment"
+    var job: Job? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,7 +34,17 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
         viewModel = (activity as NewsActivity).viewModel
         setupRecyclerView()
 
-        var job: Job? = null
+        newsAdapter.setOnItemClickListener {
+            var bundle =Bundle().apply {
+                putSerializable("article",it)
+            }
+            findNavController().navigate(R.id.action_searchNewsFragment_to_articleFragment,
+                bundle
+            )
+
+        }
+
+
         binding.etSearch.addTextChangedListener {editable ->
             job?.cancel()
             job= MainScope().launch {

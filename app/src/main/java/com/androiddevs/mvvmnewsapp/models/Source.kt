@@ -1,6 +1,11 @@
 package com.androiddevs.mvvmnewsapp.models
 
+import androidx.annotation.NonNull
+
+
+
 data class Source(
-    val id: String,
+    @NonNull
+    val id: String?,
     val name: String
 )
