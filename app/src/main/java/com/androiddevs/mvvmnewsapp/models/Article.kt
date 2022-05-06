@@ -2,6 +2,7 @@ package com.androiddevs.mvvmnewsapp.models
 
 
 import androidx.annotation.NonNull
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
@@ -21,6 +22,7 @@ data class Article(
     val description: String?,
     @NonNull
     val publishedAt: String?,
+    @Embedded(prefix = "source")
     val source: Source,
     @NonNull
     val title: String?,

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebSettings
+import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -27,11 +28,14 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         val article = args.article
 
         (activity as NewsActivity).supportActionBar?.apply {
-            title = article.title
+            title = article.source.name
             setDisplayHomeAsUpEnabled(false)
         }
 
         binding.webView.apply {
+            isLongClickable = true
+            setLayerType(View.LAYER_TYPE_HARDWARE, null)
+            registerForContextMenu(this)
             val webSettings: WebSettings = settings
             webSettings.apply {
                 javaScriptEnabled = true
@@ -47,6 +51,11 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
             webViewClient = WebViewClient()
             loadUrl(article.url.toString())
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
 
