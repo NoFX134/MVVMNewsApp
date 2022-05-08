@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebSettings
-import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -12,11 +11,12 @@ import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.databinding.FragmentArticleBinding
 import com.androiddevs.mvvmnewsapp.ui.NewsActivity
 import com.androiddevs.mvvmnewsapp.ui.NewsViewModel
+import com.google.android.material.snackbar.Snackbar
 
 @SuppressLint("SetJavaScriptEnabled")
 class ArticleFragment : Fragment(R.layout.fragment_article) {
 
-    lateinit var viewModel: NewsViewModel
+    private lateinit var viewModel: NewsViewModel
     private var _binding: FragmentArticleBinding? = null
     private val binding get() = _binding!!
     private val args: ArticleFragmentArgs by navArgs()
@@ -50,6 +50,10 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
 
             webViewClient = WebViewClient()
             loadUrl(article.url.toString())
+        }
+        binding.fab.setOnClickListener {
+            viewModel.saveArticle(article)
+            Snackbar.make(view,getString(R.string.ArticleSaveMessage), Snackbar.LENGTH_SHORT).show()
         }
     }
 

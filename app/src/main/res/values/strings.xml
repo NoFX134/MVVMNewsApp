@@ -5,11 +5,13 @@
     <string name="save_news">Save News</string>
     <string name="search_news">Search News</string>
     <string name="search">Search…</string>
-    <string name="articleImage">ArticleImage</string>
-    <string name="source">SOURCE</string>
-    <string name="title">TITLE</string>
-    <string name="description">DESCRIPTION</string>
-    <string name="published_at">PUBLISHED AT</string>
+    <string name="articleImage"></string>
+    <string name="source">ИСТОЧНИК</string>
+    <string name="title">СТАТЬЯ</string>
+    <string name="description">ОПИСАНИЕ</string>
+    <string name="published_at">ОПУБЛИКОВАНО</string>
     <string name="ErrorMessage">Произошла ошибка</string>
-
+    <string name="ArticleSaveMessage">Статья сохранена</string>
+    <string name="ArticleDeleteMessage">Статья удалена</string>
+    <string name="Undo">Отмена</string>
 </resources>

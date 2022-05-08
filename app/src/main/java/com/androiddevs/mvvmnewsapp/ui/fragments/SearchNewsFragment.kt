@@ -21,12 +21,12 @@ import kotlinx.coroutines.launch
 
 class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
 
-    lateinit var viewModel: NewsViewModel
-    lateinit var newsAdapter: NewsAdapter
+    private lateinit var viewModel: NewsViewModel
+    private lateinit var newsAdapter: NewsAdapter
     private var _binding: FragmentSearchNewsBinding? = null
     private val binding get() = _binding!!
     private val TAG = "SearchNewsFragment"
-    var job: Job? = null
+    private var job: Job? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,7 +35,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
         setupRecyclerView()
 
         newsAdapter.setOnItemClickListener {
-            var bundle =Bundle().apply {
+            val bundle =Bundle().apply {
                 putSerializable("article",it)
             }
             findNavController().navigate(R.id.action_searchNewsFragment_to_articleFragment,
