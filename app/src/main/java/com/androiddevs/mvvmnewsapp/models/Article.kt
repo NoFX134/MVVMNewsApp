@@ -1,7 +1,5 @@
 package com.androiddevs.mvvmnewsapp.models
 
-
-import androidx.annotation.NonNull
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -14,20 +12,13 @@ import java.io.Serializable
 data class Article(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
-    @NonNull
     val author: String?,
-    @NonNull
     val content: String?,
-    @NonNull
     val description: String?,
-    @NonNull
     val publishedAt: String?,
     @Embedded(prefix = "source")
     val source: Source,
-    @NonNull
     val title: String?,
-    @NonNull
     val url: String?,
-    @NonNull
     val urlToImage: String?
 ) : Serializable

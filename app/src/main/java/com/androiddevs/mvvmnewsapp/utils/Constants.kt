@@ -6,4 +6,6 @@ package com.androiddevs.mvvmnewsapp.utils
         const val BASE_URL = "https://newsapi.org/"
         const val TIME_PATTERN = "dd MMMM yyyy hh:mm"
         const val SEARCH_NEWS_TIME_DELAY = 500L
+        const val DEFAULT_PAGE_SIZE = 20
+        const val MAX_PAGE_SIZE = 20
     }
