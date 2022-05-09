@@ -45,7 +45,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
         }
 
 
-        binding.etSearch.addTextChangedListener {editable ->
+       /* binding.etSearch.addTextChangedListener {editable ->
             job?.cancel()
             job= MainScope().launch {
                 delay(Constants.SEARCH_NEWS_TIME_DELAY)
@@ -56,35 +56,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
                 }
             }
 
-        }
-
-        viewModel.searchNews.observe(viewLifecycleOwner) { response ->
-            when (response) {
-                is Resource.Success -> {
-                    hideProgressBar()
-                    response.data?.let { newsResponse ->
-                        newsAdapter.differ.submitList(newsResponse.articles)
-                    }
-                }
-                is Resource.Error -> {
-                    hideProgressBar()
-                    response.message?.let { message ->
-                        Log.e(TAG, getString(R.string.ErrorMessage) + ":$message")
-                    }
-                }
-                is Resource.Loading -> {
-                    showProgressBar()
-                }
-            }
-        }
-    }
-
-    private fun hideProgressBar() {
-        binding.paginationProgressBar.visibility = View.INVISIBLE
-    }
-
-    private fun showProgressBar() {
-        binding.paginationProgressBar.visibility = View.VISIBLE
+        }*/
     }
 
     private fun setupRecyclerView() {
