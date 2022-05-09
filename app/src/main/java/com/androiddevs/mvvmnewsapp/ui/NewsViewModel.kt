@@ -12,6 +12,7 @@ import com.androiddevs.mvvmnewsapp.models.Article
 import com.androiddevs.mvvmnewsapp.models.NewsResponse
 import com.androiddevs.mvvmnewsapp.repository.NewsPageSource
 import com.androiddevs.mvvmnewsapp.repository.NewsRepository
+import com.androiddevs.mvvmnewsapp.repository.SearchNewsSource
 import com.androiddevs.mvvmnewsapp.utils.Constants.DEFAULT_PAGE_SIZE
 import com.androiddevs.mvvmnewsapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -29,7 +30,13 @@ class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
     private val searchNewsPage = 1
     val breakingNewsFlow: Flow<PagingData<Article>> = Pager(
         PagingConfig(pageSize = 5),
-    ){NewsPageSource()}.flow.cachedIn(viewModelScope)
+    ) { NewsPageSource() }.flow.cachedIn(viewModelScope)
+
+
+    fun searchNews(query: String): Flow<PagingData<Article>> {
+        return Pager(PagingConfig(pageSize = 5),
+        ) { SearchNewsSource(query) }.flow.cachedIn(viewModelScope)
+    }
 
     fun saveArticle(article: Article) = viewModelScope.launch {
         newsRepository.upsert(article)

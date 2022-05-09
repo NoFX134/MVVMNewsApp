@@ -39,9 +39,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             findNavController().navigate(R.id.action_breakingNewsFragment_to_articleFragment,
             bundle
                 )
-
         }
-
     }
 
     private fun setupRecyclerView() {

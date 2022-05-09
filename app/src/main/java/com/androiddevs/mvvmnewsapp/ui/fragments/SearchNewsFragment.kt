@@ -17,6 +17,7 @@ import com.androiddevs.mvvmnewsapp.utils.Resource
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
@@ -27,6 +28,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
     private val binding get() = _binding!!
     private val TAG = "SearchNewsFragment"
     private var job: Job? = null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,19 +46,20 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
 
         }
 
-
-       /* binding.etSearch.addTextChangedListener {editable ->
+      binding.etSearch.addTextChangedListener {editable ->
             job?.cancel()
             job= MainScope().launch {
                 delay(Constants.SEARCH_NEWS_TIME_DELAY)
                 editable?.let {
                     if(editable.toString().isNotEmpty()){
-                        viewModel.searchNews(editable.toString())
+                        viewModel.searchNews(editable.toString()).collectLatest { pagingData ->
+                            newsAdapter.submitData(pagingData)
+                        }
                     }
                 }
             }
 
-        }*/
+        }
     }
 
     private fun setupRecyclerView() {
