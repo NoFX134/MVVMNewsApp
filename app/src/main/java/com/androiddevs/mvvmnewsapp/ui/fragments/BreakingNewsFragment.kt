@@ -7,7 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androiddevs.mvvmnewsapp.R
-import com.androiddevs.mvvmnewsapp.adapters.NewsAdapter
+import com.androiddevs.mvvmnewsapp.adapters.NewsPagingAdapter
 import com.androiddevs.mvvmnewsapp.databinding.FragmentBreakingNewsBinding
 import com.androiddevs.mvvmnewsapp.ui.NewsActivity
 import com.androiddevs.mvvmnewsapp.ui.NewsViewModel
@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
     private lateinit var viewModel: NewsViewModel
-    private lateinit var newsAdapter: NewsAdapter
+    private lateinit var newsAdapter: NewsPagingAdapter
     private var _binding: FragmentBreakingNewsBinding? = null
     private val binding get() = _binding!!
 
@@ -28,7 +28,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         viewModel = (activity as NewsActivity).viewModel
         setupRecyclerView()
         lifecycleScope.launch {
-            viewModel.breakingNewsFlow.collectLatest { pagingData ->
+            viewModel.breakingNewsFlow().collectLatest { pagingData ->
                 newsAdapter.submitData(pagingData)
             }
         }
@@ -43,7 +43,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     }
 
     private fun setupRecyclerView() {
-        newsAdapter = NewsAdapter()
+        newsAdapter = NewsPagingAdapter()
         binding.rvBreakingNews.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)

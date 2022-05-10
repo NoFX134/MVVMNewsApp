@@ -1,6 +1,7 @@
 package com.androiddevs.mvvmnewsapp.db
 
 import androidx.lifecycle.LiveData
+import androidx.paging.PagingSource
 import androidx.room.*
 import com.androiddevs.mvvmnewsapp.models.Article
 
@@ -16,7 +17,7 @@ interface ArticleDao {
 
     //Получение записей из базы данных
     @Query("SELECT * FROM articles ")
-    fun getAllArticles(): LiveData<List<Article>>
+    fun getAllArticles():PagingSource<Int,Article>
 
     //Удаление записей из базы данных
     @Delete

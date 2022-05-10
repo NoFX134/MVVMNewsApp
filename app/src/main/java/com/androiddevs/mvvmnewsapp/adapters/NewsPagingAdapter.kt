@@ -17,7 +17,8 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 
-class NewsAdapter : PagingDataAdapter<Article, NewsAdapter.ArticleViewHolder>(ArticleDiffItemCallback) {
+class NewsPagingAdapter :
+    PagingDataAdapter<Article, NewsPagingAdapter.ArticleViewHolder>(differCallback) {
 
     private var onItemClickListener: ((Article) -> Unit)? = null
 
@@ -41,30 +42,34 @@ class NewsAdapter : PagingDataAdapter<Article, NewsAdapter.ArticleViewHolder>(Ar
         }
     }
 
-   private object ArticleDiffItemCallback: DiffUtil.ItemCallback<Article>() {
-        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
-            return oldItem.url == newItem.url
-        }
-
-        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
-            return oldItem == newItem
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
+      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
 
         return ArticleViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_article_preview, parent, false)
         )
+
+
     }
 
-
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-               holder.bind(getItem(position))
+        holder.bind(getItem(position))
     }
 
     fun setOnItemClickListener(listener: (Article) -> Unit) {
         onItemClickListener = listener
     }
+
+    companion object {
+        private val differCallback = object : DiffUtil.ItemCallback<Article>() {
+            override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+                return oldItem.url == newItem.url
+            }
+
+            override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
+
 }

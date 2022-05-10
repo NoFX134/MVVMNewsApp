@@ -8,12 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androiddevs.mvvmnewsapp.R
-import com.androiddevs.mvvmnewsapp.adapters.NewsAdapter
+import com.androiddevs.mvvmnewsapp.adapters.NewsPagingAdapter
 import com.androiddevs.mvvmnewsapp.databinding.FragmentSearchNewsBinding
 import com.androiddevs.mvvmnewsapp.ui.NewsActivity
 import com.androiddevs.mvvmnewsapp.ui.NewsViewModel
 import com.androiddevs.mvvmnewsapp.utils.Constants
-import com.androiddevs.mvvmnewsapp.utils.Resource
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -23,7 +22,7 @@ import kotlinx.coroutines.launch
 class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
 
     private lateinit var viewModel: NewsViewModel
-    private lateinit var newsAdapter: NewsAdapter
+    private lateinit var newsAdapter: NewsPagingAdapter
     private var _binding: FragmentSearchNewsBinding? = null
     private val binding get() = _binding!!
     private val TAG = "SearchNewsFragment"
@@ -63,7 +62,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
     }
 
     private fun setupRecyclerView() {
-        newsAdapter = NewsAdapter()
+        newsAdapter = NewsPagingAdapter()
         binding.rvSearchNews.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
