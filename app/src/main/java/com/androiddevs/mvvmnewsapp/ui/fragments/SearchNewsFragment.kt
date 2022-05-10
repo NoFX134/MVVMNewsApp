@@ -1,13 +1,13 @@
 package com.androiddevs.mvvmnewsapp.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androiddevs.mvvmnewsapp.R
+import com.androiddevs.mvvmnewsapp.adapters.NewsLoaderStateAdapter
 import com.androiddevs.mvvmnewsapp.adapters.NewsPagingAdapter
 import com.androiddevs.mvvmnewsapp.databinding.FragmentSearchNewsBinding
 import com.androiddevs.mvvmnewsapp.ui.NewsActivity
@@ -25,7 +25,6 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
     private lateinit var newsAdapter: NewsPagingAdapter
     private var _binding: FragmentSearchNewsBinding? = null
     private val binding get() = _binding!!
-    private val TAG = "SearchNewsFragment"
     private var job: Job? = null
 
 
@@ -42,7 +41,6 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
             findNavController().navigate(R.id.action_searchNewsFragment_to_articleFragment,
                 bundle
             )
-
         }
 
       binding.etSearch.addTextChangedListener {editable ->
@@ -64,7 +62,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
     private fun setupRecyclerView() {
         newsAdapter = NewsPagingAdapter()
         binding.rvSearchNews.apply {
-            adapter = newsAdapter
+            adapter = newsAdapter.withLoadStateFooter(NewsLoaderStateAdapter())
             layoutManager = LinearLayoutManager(activity)
         }
     }

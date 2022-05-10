@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.mvvmnewsapp.R
+import com.androiddevs.mvvmnewsapp.adapters.NewsLoaderStateAdapter
 import com.androiddevs.mvvmnewsapp.adapters.NewsPagingAdapter
 import com.androiddevs.mvvmnewsapp.databinding.FragmentSavedNewsBinding
 import com.androiddevs.mvvmnewsapp.ui.NewsActivity
@@ -75,7 +76,7 @@ class SaveNewsFragment : Fragment(R.layout.fragment_saved_news) {
     private fun setupRecyclerView() {
         newsAdapter = NewsPagingAdapter()
         binding.rvSavedNews.apply {
-            adapter = newsAdapter
+            adapter = newsAdapter.withLoadStateFooter(NewsLoaderStateAdapter())
             layoutManager = LinearLayoutManager(activity)
         }
     }
