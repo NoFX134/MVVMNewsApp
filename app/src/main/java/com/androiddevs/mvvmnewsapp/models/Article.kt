@@ -2,12 +2,17 @@ package com.androiddevs.mvvmnewsapp.models
 
 import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
 
 @Entity(
-    tableName = "articles"
+    tableName = "articles",
+    indices = [Index(
+        value = ["title"],
+        unique = true
+    )]
 )
 data class Article(
     @PrimaryKey(autoGenerate = true)

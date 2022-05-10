@@ -28,7 +28,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         val article = args.article
 
         (activity as NewsActivity).supportActionBar?.apply {
-            title = article.source.name
+            title = article.source.name.uppercase()
             setDisplayHomeAsUpEnabled(false)
         }
 
