@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebSettings
+import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.androiddevs.mvvmnewsapp.R
@@ -12,6 +14,7 @@ import com.androiddevs.mvvmnewsapp.databinding.FragmentArticleBinding
 import com.androiddevs.mvvmnewsapp.ui.NewsActivity
 import com.androiddevs.mvvmnewsapp.ui.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
+
 
 @SuppressLint("SetJavaScriptEnabled")
 class ArticleFragment : Fragment(R.layout.fragment_article) {
@@ -47,9 +50,16 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
                 setSupportZoom(true)
                 defaultTextEncodingName = "utf-8"
             }
-
-            webViewClient = WebViewClient()
             loadUrl(article.url.toString())
+            val progressBar=ProgressBar(context, null, android.R.attr.progressBarStyleLarge)
+            progressBar.visibility=View.VISIBLE
+            webViewClient = object : WebViewClient() {
+                override fun onPageFinished(view: WebView, url: String) {
+                    progressBar.visibility=View.INVISIBLE
+
+                }
+            }
+
         }
         binding.fab.setOnClickListener {
             viewModel.saveArticle(article)

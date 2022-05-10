@@ -5,8 +5,12 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
+import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androiddevs.mvvmnewsapp.R
+import com.androiddevs.mvvmnewsapp.adapters.NewsLoaderStateAdapter
 import com.androiddevs.mvvmnewsapp.adapters.NewsPagingAdapter
 import com.androiddevs.mvvmnewsapp.databinding.FragmentBreakingNewsBinding
 import com.androiddevs.mvvmnewsapp.ui.NewsActivity
@@ -33,19 +37,20 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             }
         }
         newsAdapter.setOnItemClickListener {
-            val bundle =Bundle().apply {
-                putSerializable("article",it)
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
             }
-            findNavController().navigate(R.id.action_breakingNewsFragment_to_articleFragment,
-            bundle
-                )
+            findNavController().navigate(
+                R.id.action_breakingNewsFragment_to_articleFragment,
+                bundle
+            )
         }
     }
 
     private fun setupRecyclerView() {
         newsAdapter = NewsPagingAdapter()
         binding.rvBreakingNews.apply {
-            adapter = newsAdapter
+            adapter = newsAdapter.withLoadStateFooter(NewsLoaderStateAdapter())
             layoutManager = LinearLayoutManager(activity)
         }
     }
