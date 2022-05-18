@@ -20,15 +20,15 @@ class NewsPageSource() : PagingSource<Int, Article>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         val pageNumber: Int = params.key ?: 1
         val pageSize: Int = params.loadSize.coerceAtMost(MAX_PAGE_SIZE)
-        val response =
-            RetrofitInstance.api.getBreakingNews(countryCode = "ru", pageNumber, pageSize)
-        return if (response.isSuccessful) {
+        return try {
+            val response =
+                RetrofitInstance.api.getBreakingNews(countryCode = "ru", pageNumber, pageSize)
             val articles = checkNotNull(response.body()).articles
             val nextKey = if (articles.size < pageSize) null else pageNumber + 1
             val prevKey = if (pageNumber == 1) null else pageNumber - 1
             LoadResult.Page(articles, prevKey, nextKey)
-        } else {
-            LoadResult.Error(HttpException(response))
+        } catch (e: Exception) {
+            LoadResult.Error(e)
 
         }
     }

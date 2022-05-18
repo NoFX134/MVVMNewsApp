@@ -20,17 +20,19 @@ class SearchNewsSource(private val query: String): PagingSource<Int, Article>() 
         if (query.isEmpty()) {
             return LoadResult.Page(emptyList(), prevKey = null, nextKey = null)
         }
+
         val pageNumber: Int = params.key ?: 1
         val pageSize: Int = params.loadSize.coerceAtMost(Constants.MAX_PAGE_SIZE)
-        val response =
-            RetrofitInstance.api.searchNews(query, pageNumber, pageSize)
-        return if (response.isSuccessful) {
+
+        return try {
+            val response =
+                RetrofitInstance.api.searchNews(query, pageNumber, pageSize)
             val articles = checkNotNull(response.body()).articles
             val nextKey = if (articles.size < pageSize) null else pageNumber + 1
             val prevKey = if (pageNumber == 1) null else pageNumber - 1
             LoadResult.Page(articles, prevKey, nextKey)
-        } else {
-            LoadResult.Error(HttpException(response))
+        } catch (e: Exception) {
+            LoadResult.Error(e)
 
         }
     }
