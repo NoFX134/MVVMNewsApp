@@ -2,11 +2,9 @@ package com.androiddevs.mvvmnewsapp.repository
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.androiddevs.mvvmnewsapp.api.NewsAPI
 import com.androiddevs.mvvmnewsapp.api.RetrofitInstance
 import com.androiddevs.mvvmnewsapp.models.Article
 import com.androiddevs.mvvmnewsapp.utils.Constants.MAX_PAGE_SIZE
-import retrofit2.HttpException
 
 class NewsPageSource() : PagingSource<Int, Article>() {
 

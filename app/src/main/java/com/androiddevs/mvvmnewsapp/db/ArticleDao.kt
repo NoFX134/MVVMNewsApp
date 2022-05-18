@@ -1,6 +1,6 @@
 package com.androiddevs.mvvmnewsapp.db
 
-import androidx.lifecycle.LiveData
+
 import androidx.paging.PagingSource
 import androidx.room.*
 import com.androiddevs.mvvmnewsapp.models.Article

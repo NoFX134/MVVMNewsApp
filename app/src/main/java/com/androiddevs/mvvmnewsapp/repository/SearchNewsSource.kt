@@ -5,7 +5,7 @@ import androidx.paging.PagingState
 import com.androiddevs.mvvmnewsapp.api.RetrofitInstance
 import com.androiddevs.mvvmnewsapp.models.Article
 import com.androiddevs.mvvmnewsapp.utils.Constants
-import retrofit2.HttpException
+
 
 class SearchNewsSource(private val query: String): PagingSource<Int, Article>() {
 
