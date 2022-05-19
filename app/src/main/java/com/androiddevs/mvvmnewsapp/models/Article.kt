@@ -26,4 +26,8 @@ data class Article(
     val title: String?,
     val url: String?,
     val urlToImage: String?
-) : Serializable
+) : Serializable {
+    fun upper(): String? {
+        return description?.let { Regex("""[</a-z>]""").replace(it, "") }
+    }
+}

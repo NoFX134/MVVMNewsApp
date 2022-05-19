@@ -29,7 +29,7 @@ class NewsPagingAdapter :
             Glide.with(itemView).load(article?.urlToImage).into(binding.ivArticleImage)
             binding.tvSource.text = article?.source?.name
             binding.tvTitle.text = article?.title
-            binding.tvDescription.text = article?.description
+            binding.tvDescription.text = article?.upper()
             binding.tvPublishedAt.text = ZonedDateTime.parse(article?.publishedAt)
                 .format(DateTimeFormatter.ofPattern(TIME_PATTERN, Locale("ru")))
             itemView.setOnClickListener {
