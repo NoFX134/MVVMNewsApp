@@ -10,11 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.databinding.ItemArticlePreviewBinding
 import com.androiddevs.mvvmnewsapp.models.Article
-import com.androiddevs.mvvmnewsapp.utils.Constants.TIME_PATTERN
+import com.androiddevs.mvvmnewsapp.utils.clearDescription
+import com.androiddevs.mvvmnewsapp.utils.editDate
 import com.bumptech.glide.Glide
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 
 class NewsPagingAdapter :
@@ -25,35 +23,29 @@ class NewsPagingAdapter :
     inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var binding: ItemArticlePreviewBinding = ItemArticlePreviewBinding.bind(itemView)
 
-        fun bind(article: Article?) {
-            Glide.with(itemView).load(article?.urlToImage).into(binding.ivArticleImage)
-            binding.tvSource.text = article?.source?.name
-            binding.tvTitle.text = article?.title
-            binding.tvDescription.text = article?.clearDescription()
-            binding.tvPublishedAt.text = ZonedDateTime.parse(article?.publishedAt)
-                .format(DateTimeFormatter.ofPattern(TIME_PATTERN, Locale("ru")))
-            itemView.setOnClickListener {
-                onItemClickListener?.let {
-                    if (article != null) {
+        fun bind(article: Article) {
+                Glide.with(itemView).load(article.urlToImage).into(binding.ivArticleImage)
+                binding.tvSource.text = article.source.name
+                binding.tvTitle.text = article.title
+                binding.tvDescription.text = clearDescription(article.description)
+                binding.tvPublishedAt.text = editDate(article.publishedAt)
+                itemView.setOnClickListener {
+                    onItemClickListener?.let {
                         it(article)
-                    }
                 }
             }
         }
     }
-
-      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
 
         return ArticleViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_article_preview, parent, false)
         )
-
-
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        getItem(position)?.let { holder.bind(it) }
     }
 
     fun setOnItemClickListener(listener: (Article) -> Unit) {
@@ -71,5 +63,4 @@ class NewsPagingAdapter :
             }
         }
     }
-
 }

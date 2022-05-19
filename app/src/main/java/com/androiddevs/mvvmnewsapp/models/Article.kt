@@ -4,7 +4,11 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.androiddevs.mvvmnewsapp.utils.Constants
 import java.io.Serializable
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 @Entity(
@@ -20,14 +24,10 @@ data class Article(
     val author: String?,
     val content: String?,
     val description: String?,
-    val publishedAt: String?,
+    var publishedAt: String?,
     @Embedded(prefix = "source")
     val source: Source,
     val title: String?,
     val url: String?,
     val urlToImage: String?
-) : Serializable {
-    fun clearDescription(): String? {
-        return description?.let { Regex("""[</a-z>]""").replace(it, "") }
-    }
-}
+) : Serializable
