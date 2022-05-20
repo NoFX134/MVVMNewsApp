@@ -7,6 +7,7 @@ import com.androiddevs.mvvmnewsapp.models.Article
 import com.androiddevs.mvvmnewsapp.repository.NewsPageSource
 import com.androiddevs.mvvmnewsapp.repository.NewsRepository
 import com.androiddevs.mvvmnewsapp.repository.SearchNewsSource
+import com.androiddevs.mvvmnewsapp.utils.Constants.rkn
 import com.androiddevs.mvvmnewsapp.utils.clearDescription
 import com.androiddevs.mvvmnewsapp.utils.editDate
 import kotlinx.coroutines.flow.Flow
@@ -20,7 +21,7 @@ class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
         return Pager(PagingConfig(pageSize = 5)) {
             NewsPageSource()
         }.flow
-            .map { it -> it.filter { it.source.name != "Google News" } }
+            .map { it -> it.filter { rkn.indexOf(it.source.name)<0 } }
             .map { it ->
                 it.map {
                     it.apply {
@@ -37,7 +38,7 @@ class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
         ) {
             SearchNewsSource(query)
         }.flow
-            .map { it -> it.filter { it.source.name != "Google News" } }
+            .map { it -> it.filter { rkn.indexOf(it.source.name)<0 } }
             .map { it ->
                 it.map {
                     it.apply {
