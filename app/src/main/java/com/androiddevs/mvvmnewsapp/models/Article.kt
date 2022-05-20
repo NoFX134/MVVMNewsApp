@@ -23,7 +23,7 @@ data class Article(
     var id: Int? = null,
     val author: String?,
     val content: String?,
-    val description: String?,
+    var description: String?,
     var publishedAt: String?,
     @Embedded(prefix = "source")
     val source: Source,
