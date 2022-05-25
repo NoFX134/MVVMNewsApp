@@ -14,6 +14,6 @@
 *  Архитектура приложения MVVM
 *  ### Скриншоты
 <img src="screenshots/BreakingNewsFragment.png" width="300">
-<img src="screenshot/SaveNewsFragment.png" width="300">
-<img src="screenshot/SearchNewsFragment.png" width="300">
-<img src="screenshot/ArticleFragment.png" width="300">
+<img src="screenshots/SaveNewsFragment.png" width="300">
+<img src="screenshots/SearchNewsFragment.png" width="300">
+<img src="screenshots/ArticleFragment.png" width="300">
