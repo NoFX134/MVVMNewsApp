@@ -27,6 +27,7 @@ class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
                     it.apply {
                         publishedAt = editDate(publishedAt)
                         description = clearDescription(description)
+                        source.name = source.name.lowercase()
                     }
                 }
             }
@@ -44,6 +45,7 @@ class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
                     it.apply {
                         publishedAt = editDate(publishedAt)
                         description = clearDescription(description)
+                        source.name = source.name.lowercase()
                     }
                 }
             }
