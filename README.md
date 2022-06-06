@@ -11,7 +11,7 @@
 *  Room для работы с базой данных 
 *  Paging 3 для пагинации данных в RecycleView
 *  Coroutines для асинхронной загрузки данных
-*  Архитектура приложения MVVM
+*  Архитектурный паттерн MVVM
 *  ### Скриншоты
 <img src="screenshots/BreakingNewsFragment.png" width="300">
 <img src="screenshots/SaveNewsFragment.png" width="300">
