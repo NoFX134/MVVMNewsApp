@@ -29,7 +29,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         viewModel = (activity as NewsActivity).viewModel
         setupRecyclerView()
         lifecycleScope.launch {
-            viewModel.breakingNewsFlow().collectLatest { pagingData ->
+            viewModel.breakingNewsFlow.collectLatest { pagingData ->
                 newsAdapter.submitData(pagingData)
             }
         }

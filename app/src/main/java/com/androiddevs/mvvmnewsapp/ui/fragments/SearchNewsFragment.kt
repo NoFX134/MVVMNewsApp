@@ -49,7 +49,8 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
                 delay(Constants.SEARCH_NEWS_TIME_DELAY)
                 editable?.let {
                     if(editable.toString().isNotEmpty()){
-                        viewModel.searchNews(editable.toString()).collectLatest { pagingData ->
+                        viewModel.setQuery(editable.toString())
+                        viewModel.searchNews.collectLatest { pagingData ->
                             newsAdapter.submitData(pagingData)
                         }
                     }

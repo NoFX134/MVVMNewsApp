@@ -17,39 +17,42 @@ import kotlinx.coroutines.launch
 
 class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
 
-    fun breakingNewsFlow(): Flow<PagingData<Article>> {
-        return Pager(PagingConfig(pageSize = 5)) {
-            NewsPageSource()
-        }.flow
-            .map { it -> it.filter { rkn.indexOf(it.source.name)<0 } }
-            .map { it ->
-                it.map {
-                    it.apply {
-                        publishedAt = editDate(publishedAt)
-                        description = clearDescription(description)
-                        source.name = source.name.lowercase()
-                    }
-                }
-            }
+    private var query = ""
+
+    fun setQuery(query: String){
+        this.query = query
     }
 
-    fun searchNews(query: String): Flow<PagingData<Article>> {
-        return Pager(
+    val breakingNewsFlow=Pager(PagingConfig(pageSize = 5)) {
+        NewsPageSource()
+    }.flow
+        .map { it -> it.filter { rkn.indexOf(it.source.name)<0 } }
+        .map { it ->
+            it.map {
+                it.apply {
+                    publishedAt = editDate(publishedAt)
+                    description = clearDescription(description)
+                    source.name = source.name.lowercase()
+                }
+            }
+        }.cachedIn(viewModelScope)
+
+
+    val searchNews  =  Pager(
             PagingConfig(pageSize = 5)
         ) {
             SearchNewsSource(query)
         }.flow
-            .map { it -> it.filter { rkn.indexOf(it.source.name)<0 } }
-            .map { it ->
-                it.map {
-                    it.apply {
-                        publishedAt = editDate(publishedAt)
-                        description = clearDescription(description)
-                        source.name = source.name.lowercase()
-                    }
+        .map { it -> it.filter { rkn.indexOf(it.source.name)<0 } }
+        .map { it ->
+            it.map {
+                it.apply {
+                    publishedAt = editDate(publishedAt)
+                    description = clearDescription(description)
+                    source.name = source.name.lowercase()
                 }
             }
-    }
+        }.cachedIn(viewModelScope)
 
 
     fun saveArticle(article: Article) = viewModelScope.launch {
