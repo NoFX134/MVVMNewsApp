@@ -5,7 +5,7 @@
     app:startDestination="@id/breakingNewsFragment">
     <fragment
         android:id="@+id/breakingNewsFragment"
-        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.BreakingNewsFragment"
+        android:name="com.androiddevs.mvvmnewsapp.presentation.fragments.BreakingNewsFragment"
         android:label="Срочные новости">
         <action
             android:id="@+id/action_breakingNewsFragment_to_articleFragment"
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/saveNewsFragment"
-        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.SaveNewsFragment"
+        android:name="com.androiddevs.mvvmnewsapp.presentation.fragments.SaveNewsFragment"
         android:label="Сохраненные статьи" >
         <action
             android:id="@+id/action_saveNewsFragment_to_articleFragment"
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchNewsFragment"
-        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.SearchNewsFragment"
+        android:name="com.androiddevs.mvvmnewsapp.presentation.fragments.SearchNewsFragment"
         android:label="Поиск статей" >
         <action
             android:id="@+id/action_searchNewsFragment_to_articleFragment"
@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/articleFragment"
-        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.ArticleFragment"
+        android:name="com.androiddevs.mvvmnewsapp.presentation.fragments.ArticleFragment"
         app:enterAnim="@anim/slide_in_right"
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_left"
@@ -52,7 +52,7 @@
         >
         <argument
             android:name="article"
-            app:argType="com.androiddevs.mvvmnewsapp.models.Article" />
+            app:argType="com.androiddevs.mvvmnewsapp.data.models.Article" />
     </fragment>
 
 </navigation>

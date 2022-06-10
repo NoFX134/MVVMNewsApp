@@ -1,8 +1,8 @@
-package com.androiddevs.mvvmnewsapp.api
+package com.androiddevs.mvvmnewsapp.data.local.api
 
 
 import androidx.annotation.IntRange
-import com.androiddevs.mvvmnewsapp.models.NewsResponse
+import com.androiddevs.mvvmnewsapp.data.models.NewsResponse
 import com.androiddevs.mvvmnewsapp.utils.Constants.API_KEY
 import com.androiddevs.mvvmnewsapp.utils.Constants.DEFAULT_PAGE_SIZE
 import com.androiddevs.mvvmnewsapp.utils.Constants.MAX_PAGE_SIZE

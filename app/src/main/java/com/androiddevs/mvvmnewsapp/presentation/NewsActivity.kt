@@ -1,4 +1,4 @@
-package com.androiddevs.mvvmnewsapp.ui
+package com.androiddevs.mvvmnewsapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,8 +9,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.databinding.ActivityNewsBinding
-import com.androiddevs.mvvmnewsapp.db.ArticleDatabase
-import com.androiddevs.mvvmnewsapp.repository.NewsRepository
+import com.androiddevs.mvvmnewsapp.data.remote.db.ArticleDatabase
+import com.androiddevs.mvvmnewsapp.data.repository.NewsRepositoryImpl
+import com.androiddevs.mvvmnewsapp.domain.usecase.GetBreakingNewsUseCase
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -23,8 +24,9 @@ class NewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val newsRepository = NewsRepository(ArticleDatabase(this))
-        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
+        val newsRepository = NewsRepositoryImpl(ArticleDatabase(this))
+        val getBreakingNewsUseCase= GetBreakingNewsUseCase(newsRepository)
+        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository,getBreakingNewsUseCase)
         viewModel= ViewModelProvider(this,viewModelProviderFactory)[NewsViewModel::class.java]
         val navView: BottomNavigationView = binding.bottomNavigationView
         val navHostFragment = supportFragmentManager

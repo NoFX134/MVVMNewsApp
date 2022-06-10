@@ -1,14 +1,11 @@
-package com.androiddevs.mvvmnewsapp.models
+package com.androiddevs.mvvmnewsapp.data.models
 
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.androiddevs.mvvmnewsapp.utils.Constants
+import com.androiddevs.mvvmnewsapp.data.models.Source
 import java.io.Serializable
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 
 @Entity(

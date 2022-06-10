@@ -1,9 +1,9 @@
-package com.androiddevs.mvvmnewsapp.repository
+package com.androiddevs.mvvmnewsapp.data.local.dataSource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.androiddevs.mvvmnewsapp.api.RetrofitInstance
-import com.androiddevs.mvvmnewsapp.models.Article
+import com.androiddevs.mvvmnewsapp.data.local.api.RetrofitInstance
+import com.androiddevs.mvvmnewsapp.data.models.Article
 import com.androiddevs.mvvmnewsapp.utils.Constants.MAX_PAGE_SIZE
 
 class NewsPageSource() : PagingSource<Int, Article>() {
