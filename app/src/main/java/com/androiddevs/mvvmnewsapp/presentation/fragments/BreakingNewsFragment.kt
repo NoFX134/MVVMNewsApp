@@ -1,4 +1,4 @@
-package com.androiddevs.mvvmnewsapp.ui.fragments
+package com.androiddevs.mvvmnewsapp.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -7,11 +7,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androiddevs.mvvmnewsapp.R
-import com.androiddevs.mvvmnewsapp.adapters.NewsLoaderStateAdapter
-import com.androiddevs.mvvmnewsapp.adapters.NewsPagingAdapter
+import com.androiddevs.mvvmnewsapp.presentation.adapters.NewsLoaderStateAdapter
+import com.androiddevs.mvvmnewsapp.presentation.adapters.NewsPagingAdapter
 import com.androiddevs.mvvmnewsapp.databinding.FragmentBreakingNewsBinding
-import com.androiddevs.mvvmnewsapp.ui.NewsActivity
-import com.androiddevs.mvvmnewsapp.ui.NewsViewModel
+import com.androiddevs.mvvmnewsapp.presentation.NewsActivity
+import com.androiddevs.mvvmnewsapp.presentation.NewsViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

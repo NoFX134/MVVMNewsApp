@@ -1,4 +1,4 @@
-package com.androiddevs.mvvmnewsapp.ui.fragments
+package com.androiddevs.mvvmnewsapp.presentation.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.databinding.FragmentArticleBinding
-import com.androiddevs.mvvmnewsapp.ui.NewsActivity
-import com.androiddevs.mvvmnewsapp.ui.NewsViewModel
+import com.androiddevs.mvvmnewsapp.presentation.NewsActivity
+import com.androiddevs.mvvmnewsapp.presentation.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
 
 

@@ -1,4 +1,4 @@
-package com.androiddevs.mvvmnewsapp.ui.fragments
+package com.androiddevs.mvvmnewsapp.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.mvvmnewsapp.R
-import com.androiddevs.mvvmnewsapp.adapters.NewsLoaderStateAdapter
-import com.androiddevs.mvvmnewsapp.adapters.NewsPagingAdapter
+import com.androiddevs.mvvmnewsapp.presentation.adapters.NewsLoaderStateAdapter
+import com.androiddevs.mvvmnewsapp.presentation.adapters.NewsPagingAdapter
 import com.androiddevs.mvvmnewsapp.databinding.FragmentSavedNewsBinding
-import com.androiddevs.mvvmnewsapp.ui.NewsActivity
-import com.androiddevs.mvvmnewsapp.ui.NewsViewModel
+import com.androiddevs.mvvmnewsapp.presentation.NewsActivity
+import com.androiddevs.mvvmnewsapp.presentation.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

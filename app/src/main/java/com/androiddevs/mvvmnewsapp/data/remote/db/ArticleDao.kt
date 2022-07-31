@@ -1,9 +1,9 @@
-package com.androiddevs.mvvmnewsapp.db
+package com.androiddevs.mvvmnewsapp.data.remote.db
 
 
 import androidx.paging.PagingSource
 import androidx.room.*
-import com.androiddevs.mvvmnewsapp.models.Article
+import com.androiddevs.mvvmnewsapp.data.models.Article
 
 
 //интерфейс базы данных
@@ -13,11 +13,11 @@ interface ArticleDao {
 
     //Добавление записей, при совпадении записи обновить
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun upsert(article:Article): Long
+    suspend fun upsert(article: Article): Long
 
     //Получение записей из базы данных
     @Query("SELECT * FROM articles ")
-    fun getAllArticles():PagingSource<Int,Article>
+    fun getAllArticles():PagingSource<Int, Article>
 
     //Удаление записей из базы данных
     @Delete

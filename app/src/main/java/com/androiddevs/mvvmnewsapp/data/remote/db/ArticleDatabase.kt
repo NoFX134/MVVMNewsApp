@@ -1,10 +1,10 @@
-package com.androiddevs.mvvmnewsapp.db
+package com.androiddevs.mvvmnewsapp.data.remote.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.androiddevs.mvvmnewsapp.models.Article
+import com.androiddevs.mvvmnewsapp.data.models.Article
 
 @Database(
     entities = [Article::class],

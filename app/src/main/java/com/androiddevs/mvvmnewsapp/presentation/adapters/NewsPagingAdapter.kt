@@ -1,4 +1,4 @@
-package com.androiddevs.mvvmnewsapp.adapters
+package com.androiddevs.mvvmnewsapp.presentation.adapters
 
 
 import android.view.LayoutInflater
@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.databinding.ItemArticlePreviewBinding
-import com.androiddevs.mvvmnewsapp.models.Article
-import com.androiddevs.mvvmnewsapp.utils.clearDescription
-import com.androiddevs.mvvmnewsapp.utils.editDate
+import com.androiddevs.mvvmnewsapp.data.models.Article
 import com.bumptech.glide.Glide
 
 

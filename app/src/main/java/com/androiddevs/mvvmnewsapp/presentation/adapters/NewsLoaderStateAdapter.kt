@@ -1,4 +1,4 @@
-package com.androiddevs.mvvmnewsapp.adapters
+package com.androiddevs.mvvmnewsapp.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.View
